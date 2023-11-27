@@ -1,0 +1,1 @@
+/** Write the name of the providers separated by commas. Ex: login_provider, list_provider, etc. Remember to put space after the comma and respect the snake_case. (Delete this line.) */ 

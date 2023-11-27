@@ -1,0 +1,1 @@
+code:int, price:decimal-9,2, name:varchar-20, description:varchar-255

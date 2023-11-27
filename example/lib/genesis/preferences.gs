@@ -1,0 +1,1 @@
+host:string, port:int, user:string, password:string

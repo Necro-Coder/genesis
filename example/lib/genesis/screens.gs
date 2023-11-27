@@ -1,0 +1,1 @@
+config_screen, home_screen, paid_screen, lgoin_screen

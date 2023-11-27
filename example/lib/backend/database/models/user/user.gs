@@ -1,0 +1,1 @@
+code:int, name:varchar-20, born:date
