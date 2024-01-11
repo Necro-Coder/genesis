@@ -1,7 +1,4 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-import 'package:genesis/genesis.dart';
 
 void main() {
   runApp(const MyApp());
