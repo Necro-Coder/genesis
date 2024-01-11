@@ -1,6 +1,8 @@
 import 'package:genesis/src/features/error_control/exceptions.dart';
 import 'package:genesis/src/genesis_data_types/genesis_generic_classes/genesis_serializable_object.dart';
+import 'package:reflectable/reflectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_simple_dao_backend/sqflite_simple_dao_backend.dart';
 
 class GenesisPreferences {
   static late SharedPreferences _prefs;
@@ -61,13 +63,19 @@ class GenesisPreferences {
             : _prefs.getStringList(key) as T;
         break;
       case GenesisSerializableObject:
-        returnValue = value != ''
-            ? await _prefs.setString(key, value.toMap().toString()) as T
-            : GenesisSerializableObject()
-                .fromMap(_prefs.getString(key) as Map<String, dynamic>) as T;
+        var instanceClass = reflector.reflectType(value) as ClassMirror;
+
+        try {
+          returnValue = value != ''
+              ? await _prefs.setString(key, value.toMap().toString()) as T
+              : instanceClass.newInstance(
+                  'fromMap', _prefs.getStringList(key) ?? []);
+        } catch (e) {
+          _exceptions.throwBadPreferencesType(key);
+        }
         break;
       default:
-        _exceptions.throwBadPreferencesType(key);
+        _exceptions.throwNoPreferencesElement(value.runtimeType);
     }
 
     return returnValue;

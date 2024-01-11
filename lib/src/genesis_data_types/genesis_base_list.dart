@@ -1,8 +1,8 @@
 import 'dart:collection';
 
-import 'package:sqflite_simple_dao_backend/sqflite_simple_dao_backend.dart';
+import 'package:genesis/src/features/database/genesis_dao_model.dart';
 
-abstract class GBaseList<E> extends Dao with ListBase<E> {
+abstract class GBaseList<E> extends GDaoModel with ListBase<E> {
   final List<E> _innerList;
 
   GBaseList([List<E>? initialElements]) : _innerList = initialElements ?? [];

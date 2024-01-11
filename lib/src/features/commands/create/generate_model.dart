@@ -71,12 +71,6 @@ class GenerateModel {
     return '';
   }
 
-  // static final Map<String, String> _fields = {
-  //   'nr': Constants.bigint,
-  //   'name': Constants.varchar['20']!,
-  //   'date': Constants.datetime,
-  //   'price': Constants.decimal['9,2']!
-  // };
   String _generateFields(Map<String, String> properties) {
     String fieldsString = 'static final Map<String, String> _fields = {\n';
     for (var property in properties.entries) {

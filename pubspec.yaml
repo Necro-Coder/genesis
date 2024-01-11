@@ -16,6 +16,7 @@ dependencies:
   sqflite_simple_dao_backend: ^1.0.1
   ansicolor: ^2.0.2
   shared_preferences: ^2.2.2
+  reflectable: ^4.0.5
 
 dev_dependencies:
   flutter_test:
