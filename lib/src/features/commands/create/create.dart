@@ -299,6 +299,36 @@ class $modelName extends Dao {
 ''');
   }
 
+  void createReflectionNeeds() {
+    String builderRoute = 'lib/builder.dart';
+    String builderContent = '''
+import 'package:reflectable/reflectable_builder.dart' as builder;
+
+main(List<String> arguments) async {
+  await builder.reflectableBuild(arguments);
+}
+''';
+
+    String buildYamlRoute = 'build.yaml';
+    //TODO: Use the model route in el generate_for of the build.yaml
+    String buildYamlContent = '''
+targets:
+  \$default:
+    builders:
+      reflectable:
+        generate_for:
+          - lib/database/entity/**.dart # Here your entity directory
+        options:
+          formatted: true
+''';
+
+    File builderFile = File(builderRoute);
+    File buildYamlFile = File(buildYamlRoute);
+
+    builderFile.writeAsStringSync(builderContent);
+    buildYamlFile.writeAsStringSync(buildYamlContent);
+  }
+
   // void _createCubit(String cubitName) {}
 
   // void _createStateLessWidget(String stateLessWidgetName) {}

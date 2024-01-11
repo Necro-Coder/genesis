@@ -21,7 +21,7 @@ class Init {
 
   void _createGenesisFolder() {
     stdout.write(ConsoleColor.penInfo('Creating genesis folder...\n'));
-    Directory directory = Directory('genesis');
+    Directory directory = Directory('lib/genesis');
     directory.createSync();
     _createGenesisFile(directory.path);
     _createGenesisReadme(directory.path);
