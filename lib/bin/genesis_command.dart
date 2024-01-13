@@ -10,14 +10,14 @@ void main(List<dynamic> arguments) async {
   bool isRoot = false;
   Process pwd = await Process.start('ls', []);
   await for (var event in pwd.stdout.transform(const Utf8Decoder())) {
-    isRoot = event.contains('pubspect.yaml');
+    isRoot = event.trim().contains('pubspec.yaml');
   }
   if (arguments.isEmpty) {
     Help().printHelp('all');
     return;
   } else if (!isRoot) {
     throw GenesisException(
-        'You are not in the root of the project, please, move to the root of the project to avoid fails');
+        '\nYou are not in the root of the project, please, move to the root of the project to avoid fails\n');
   }
 
   switch (arguments[0]) {

@@ -19,6 +19,8 @@ class Exceptions {
       'An error occurred while creating the folder `+++`';
   final String _errorCreatingFile =
       'An error occurred while creating the file `+++`';
+  final String _errorEmptyMetadata =
+      'The metadata file is empty, please, execute genesis create with the genesis.gs complete.';
 
   /// The function replaces all occurrences of `+++` in a string with a given variable.
   ///
@@ -131,5 +133,13 @@ class Exceptions {
   /// Then, it throws a `GenesisCreateException` with the generated message.
   void throwErrorCreatingFile(String file) {
     throw GenesisCreateException(_generateException(_errorCreatingFile, file));
+  }
+
+  /// The function `throwErrorEmptyMetadata` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_errorEmptyMetadata` message.
+  ///
+  void throwErrorEmptyMetadata() {
+    throw GenesisCreateException(_errorEmptyMetadata);
   }
 }

@@ -5,7 +5,11 @@ import 'package:genesis/src/features/error_control/exceptions.dart';
 import 'package:genesis/src/features/error_control/genesis_create_exception.dart';
 import 'package:genesis/src/helpers/console_color.dart';
 
+import '../../../helpers/genesis_metadata_reader.dart';
+
 class Create {
+  final String _genesisFolderPath = 'lib/genesis';
+
   /// The `create` function creates a new project based on the genesis.gs file.
   ///
   /// Args:
@@ -17,7 +21,7 @@ class Create {
   /// If the metadata file is written successfully, it prints a success message and starts creating the project structure.
   void create(List<String> arguments) {
     if (arguments.isEmpty) {
-      File genesisFile = File('genesis/genesis.gs');
+      File genesisFile = File('$_genesisFolderPath/genesis.gs');
       if (!genesisFile.existsSync()) {
         stdout.write(ConsoleColor.penError(
             'The genesis.gs file does not exist. Please, run the command `genesis init` to create it'));
@@ -78,7 +82,7 @@ class Create {
   /// After processing all lines, it creates the metadata file, reads its old content, checks for changes in the metadata,
   /// and appends the new metadata to the file. Finally, it returns the metadata string.
   String _writeGenesisMetadata(String genesisFileRead) {
-    File genesisMetadata = File('genesis/genesis_metadata.gs');
+    File genesisMetadata = File('$_genesisFolderPath/genesis_metadata.gs');
     String metadataString = '';
     String metadataStringOld = '';
     try {
@@ -136,7 +140,7 @@ class Create {
                             ' -> Error at column ${row.indexOf('-')}');
                   }
                   metadataString +=
-                      '$tabulationCount p -> ${rowList[1]} ${rowList[2]} ${rowList.length > 2 ? 'NotNullable' : 'Nullable'}\n';
+                      '$tabulationCount p -> ${rowList[1]} ${rowList[2]} ${rowList.contains('?') ? 'NotNullable' : 'Nullable'}\n';
                 } else {
                   metadataString +=
                       addFileFolder(metadataString, rowList, tabulationCount);
@@ -244,12 +248,39 @@ class Create {
     return metadata;
   }
 
-  // void _createProjectStructure(String genesisMetadata) {
-  //   List<String> genesisMetadataList = genesisMetadata.split('\n');
-  //   int tabulationCount = 0;
-  //   int firstTabulation = 0;
+  void _createProjectStructure(String genesisMetadata) {
+    GMetadataReader();
+    for (var entry in GMetadataReader.generatePaths.entries) {
+      if (!Directory(entry.value.split(' ')[0]).existsSync()) {
+        _createFolder(GMetadataReader.generatePaths[entry.key]!);
+      }
+    }
+    for (var entry in GMetadataReader.paths.entries) {
+      if (!File(entry.value.split(' ')[0]).existsSync()) {
+        if (entry.key.contains('Folder')) {
+          _createFile(GMetadataReader.paths[entry.key]!);
+        } else {
+          String content = '';
+          _createFile(GMetadataReader.paths[entry.key]!, content: content);
+        }
+      }
+    }
 
-  // }
+    /*
+    for (var entry in GMetadataReader.properties.entries) {
+      if (File(entry.key.split(' ')[0]).existsSync()) {
+        _createModel(GMetadataReader.properties[entry.key]!,
+            GMetadataReader.properties, true);
+      }
+    }
+    */
+
+    for (var entry in GMetadataReader.removePaths.entries) {
+      if (File(entry.value.split(' ')[0]).existsSync()) {
+        File(entry.value.split(' ')[0]).deleteSync();
+      }
+    }
+  }
 
   /// The function `_createFolder` creates a new directory with the given `folderName` and optionally a barrel file inside it.
   ///
