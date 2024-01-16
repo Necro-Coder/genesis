@@ -4,10 +4,8 @@
     -- `D`: File
     -- `-`: Property (Is important to add a space after the hyphen)
     -- `!`: This file will be skipped by the analyzer
-    -- `?`: This property is not nullable on database and code
     -- `*`: Is complete necessary to add this symbol to identify the generation files folders
     -- `#`: This file will be created but not added to the database
-    -- `/DefaultValue`: This property will have a default value
     -- `full`: This file will be a StateFullWidget
     -- `less`: This file will be a StateLessWidget
     -- `cubit`: This file will be a Cubit
@@ -19,20 +17,20 @@
     __Database F
     ___Models F *
     ____Model1 D
-    _____- Property1/0 int
+    _____- Property1 int
     _____- Property2 string
-    _____- Property3/false bool
-    _____- Property4 DateTime ?
+    _____- Property3 bool
+    _____- Property4 DateTime
     ____Model2 D
     _____- Property1 int
     _____- Property2 string
     _____- Property3 bool
-    _____- Property4 DateTime ?
+    _____- Property4 DateTime
     ____Model3 D #
     _____- Property1 int
     _____- Property2 string
     _____- Property3 double
-    _____- Property4 DateTime ?
+    _____- Property4 DateTime
     ____Parameters D
 
     ___Preferences F *
@@ -43,11 +41,11 @@
     -- The same as Domain.Database.Models but designed to be used by the repository
     -- If want some more entities, add them below
     ____Entity1 D
-    _____- Property1/0 int
+    _____- Property1 int
     _____- Property2 string
     _____- Property3 bool
-    _____- Property4 DateTime ?
-    _____- Property5 double ?
+    _____- Property4 DateTime
+    _____- Property5 double
 
     Presentation F
     __Screens F *

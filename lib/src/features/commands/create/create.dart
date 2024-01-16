@@ -260,8 +260,7 @@ class Create {
         if (entry.key.contains('Folder')) {
           _createFile(GMetadataReader.paths[entry.key]!);
         } else {
-          String content = '';
-          _createFile(GMetadataReader.paths[entry.key]!, content: content);
+          _createFile(GMetadataReader.paths[entry.key]!, content: '');
         }
       }
     }
@@ -322,7 +321,9 @@ class Create {
   void _createFile(String fileName, {String content = ''}) {
     File file = File(fileName);
     try {
-      file.createSync();
+      if (!file.existsSync()) {
+        file.createSync();
+      }
     } catch (e) {
       Exceptions().throwErrorCreatingFile(fileName);
       return;
@@ -363,40 +364,30 @@ class $modelName extends Dao {
 
   ${GenerateModel().generateModelProperties(properties)}
 
-  factory $modelName.fromRawJson(String str) => $modelName.fromJson(json.decode(str));
-
-  factory $modelName.fromJson(Map<String, dynamic> json) => $modelName.all(
+  factory $modelName.fromRawMap(String str) => $modelName.fromMap(json.decode(str));
+  
+  /// The function is an override method that converts a map to a GenesisSerializableObject.
+  ///
+  /// Args:
+  ///   map (Map<String, dynamic>): A map containing key-value pairs where the keys are strings and the
+  /// values can be of any type.
+  ///
+  /// Returns:
+  ///   The method is returning the result of calling the `fromMap` method of the superclass.
+  @override
+  factory $modelName.fromMap(Map<String, dynamic> json) => $modelName.all(
         ${GenerateModel().generateFromJson(properties)}
   );
 
-  Map<String, dynamic> toJson() => {
+  /// The function `toMap()` returns a map representation of the object.
+  ///
+  /// Returns:
+  ///   The method is returning the result of calling the `toMap()` method on the superclass.
+  @override
+  Map<String, dynamic> toMap() => {
         ${GenerateModel().generateToJson(properties)}
   };
   ${GenerateModel().generateDatabaseMethods(database, properties)}
-  static final Map<String, String> _fields = {
-    'nr': Constants.bigint,
-    'name': Constants.varchar['20']!,
-    'date': Constants.datetime,
-    'price': Constants.decimal['9,2']!
-  };
-
-
-  static final Iterable<String> _names = _fields.keys;
-
-  static final List<String> _primary = [_names.elementAt(0)];
-  static final List<String> _exception = [_names.elementAt(3)];
-
-  static final List<String> _foreign = [];
-
-  static List<String> get foreign => _foreign;
-
-  static Map<String, String> get fields => _fields;
-
-  static Iterable<String> get names => _names;
-
-  static List<String> get primary => _primary;
-
-  static List<String> get exception => _exception;
 
   @override
   bool operator ==(Object other) {
@@ -432,14 +423,13 @@ main(List<String> arguments) async {
 ''';
 
     String buildYamlRoute = 'build.yaml';
-    //TODO: Use the model route in el generate_for of the build.yaml
     String buildYamlContent = '''
 targets:
   \$default:
     builders:
       reflectable:
         generate_for:
-          - lib/database/entity/**.dart # Here your entity directory
+          - ${GMetadataReader.generatePaths['Models']}/**.dart
         options:
           formatted: true
 ''';
