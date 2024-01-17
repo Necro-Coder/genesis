@@ -56,4 +56,35 @@
     __Blocks F *
     ___ApiBloc D
     ___RouterBloc D cubit
-    
+
+
+
+
+    (f) name: Domain 
+        (f) name: Database 
+            (f) name: Models, * 
+                (d) name: ModelExample1 
+                    (p) name: name, type: string, value: DefaultName, primary: true 
+                    (p) name: age, type: int, value: 10 
+                    (p) name: groupId, type: int, foreign: true, model: Group 
+                (d) name: ModelExample2 
+                    (p) name: name, type: double, value: value, primary: primary, foreign: foreign, table: table 
+                    (p) name: name, type: bool, value: value, primary: primary, foreign: foreign, table: table 
+                    (p) name: name, type: type, DateTime: value, primary: primary, foreign: foreign, table: table 
+                    (p) name: name, type: type, value: value, primary: primary, foreign: foreign, table: table 
+                (d) name: ModelExample3 
+                    (p) name: name, type: type, value: value, primary: primary, foreign: foreign, table: table 
+                    (p) name: name, type: type, value: value, primary: primary, foreign: foreign, table: table 
+                    (p) name: name, type: type, value: value, primary: primary, foreign: foreign, table: table 
+                    (p) name: name, type: type, value: value, primary: primary, foreign: foreign, table: table 
+
+    (f) name: Repository 
+        (f) name: Database 
+            (f) name: Entity 
+
+    (f) name: Presentation 
+        (f) name: Screens 
+            (s) name: HomeScreen, template: Home 
+            (s) name: LoginScreen, state: true 
+        (f) name: Widgets 
+            (w) name: CustomWidget, template: Box 

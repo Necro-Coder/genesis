@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:genesis/src/features/commands/create/generate_model.dart';
 import 'package:genesis/src/features/error_control/exceptions.dart';
-import 'package:genesis/src/features/error_control/genesis_create_exception.dart';
 import 'package:genesis/src/helpers/console_color.dart';
-
-import '../../../helpers/genesis_metadata_reader.dart';
 
 class Create {
   final String _genesisFolderPath = 'lib/genesis';
@@ -35,14 +32,10 @@ class Create {
       stdout.write(ConsoleColor.penSuccess('genesis.gs read successfully\n'));
       stdout.write(
           ConsoleColor.penInfo('Writing the genesis.gs.metadata file...\n'));
-      String genesisMetadata = _writeGenesisMetadata(genesisFileRead);
-      if (genesisMetadata == '') {
-        return;
-      }
+      //TODO: Write the metadata file
       stdout.write(ConsoleColor.penSuccess(
           'genesis.gs.metadata written successfully\n'));
       stdout.write(ConsoleColor.penInfo('Creating the project structure...\n'));
-      await _createProjectStructure(genesisMetadata);
     }
   }
 
@@ -67,220 +60,6 @@ class Create {
     stdout.write(
         ConsoleColor.penSuccess('genesis.gs file was read successfully\n'));
     return genesisFileRead;
-  }
-
-  /// The function `_writeGenesisMetadata` generates a metadata string for a given Genesis file.
-  ///
-  /// Args:
-  ///   `genesisFileRead` (String): The content of the Genesis file. It is used for constructing the metadata string.
-  ///
-  /// Returns:
-  ///   The method returns a String that represents the metadata of the Genesis file.
-  ///
-  /// This function reads the `genesisFileRead` line by line, and for each line, it determines the level of indentation,
-  /// checks for special characters, and processes the line accordingly. If an error occurs during the process,
-  /// it throws an error using the `throwErrorCreatingGenesisFile` method from the `Exceptions` class and returns an empty string.
-  /// After processing all lines, it creates the metadata file, reads its old content, checks for changes in the metadata,
-  /// and appends the new metadata to the file. Finally, it returns the metadata string.
-  String _writeGenesisMetadata(String genesisFileRead) {
-    File genesisMetadata = File('$_genesisFolderPath/genesis.gs.metadata');
-    String metadataString = '';
-    String metadataStringOld = '';
-    try {
-      List<String> genesisFileReadList = [];
-      bool skip = false;
-      int tabulationCount = 0;
-      int generationFileTabulation = 0;
-      int linesCount = 0;
-      int skipTabulationCount = 0;
-      for (var row in genesisFileRead.split('\n')) {
-        linesCount++;
-
-        tabulationCount = row.replaceAll(RegExp('[^_]'), '').length;
-
-        if (tabulationCount == generationFileTabulation &&
-            tabulationCount != 0) {
-          genesisFileReadList.removeLast();
-        }
-
-        if (row.contains('!')) {
-          skip = true;
-          skipTabulationCount = tabulationCount;
-        } else if (tabulationCount == skipTabulationCount) {
-          skip = false;
-        }
-        if (row.trim().isNotEmpty) {
-          if ((row.trim().split(' ')[0] != '--') && !skip) {
-            List<String> rowList = row.trim().replaceAll('_', '').split(' ');
-            if (!row.contains('_')) {
-              if (row.contains('-')) {
-                throw GenesisCreateException(
-                    'Cannot declare a property at the top of the order.\n'
-                    'Please, declare the property inside a folder or file\n',
-                    stackTrace: '-> Error at line $linesCount\n'
-                        ' -> Error at column ${row.indexOf('-')}');
-              }
-              genesisFileReadList = [];
-              genesisFileReadList.add(rowList[0]);
-
-              metadataString += addFileFolder(metadataString, rowList, 0);
-            } else {
-              if (row.contains('*')) {
-                genesisFileReadList.add(rowList[0]);
-                generationFileTabulation = tabulationCount;
-                metadataString +=
-                    'g -> ${rowList[0]} -> ${genesisFileReadList.join('/')}\n';
-                metadataString +=
-                    addFileFolder(metadataString, rowList, tabulationCount);
-              } else {
-                if (rowList.contains('-')) {
-                  if (rowList.length < 3) {
-                    throw GenesisCreateException(
-                        'Cannot declare a property without a type or name.\n',
-                        stackTrace: '-> Error at line $linesCount'
-                            ' -> Error at column ${row.indexOf('-')}');
-                  }
-                  metadataString +=
-                      '$tabulationCount p -> ${rowList[1]} ${rowList[2]} ${rowList.contains('?') ? 'NotNullable' : 'Nullable'}\n';
-                } else {
-                  metadataString +=
-                      addFileFolder(metadataString, rowList, tabulationCount);
-                }
-                if (rowList.contains('F')) {
-                  genesisFileReadList.add(rowList[0]);
-                }
-              }
-            }
-          }
-        }
-      }
-    } catch (e) {
-      Exceptions().throwErrorCreatingGenesisFile('genesis.gs.metadata', e);
-      return '';
-    }
-    genesisMetadata.createSync();
-    metadataStringOld = genesisMetadata.readAsStringSync();
-    metadataString = _checkMetadataChanges(metadataStringOld, metadataString);
-    genesisMetadata.writeAsStringSync(metadataString, mode: FileMode.append);
-    return metadataString;
-  }
-
-  /// The function `addFileFolder` generates a metadata string for a file or folder based on the provided row list and tabulation count.
-  ///
-  /// Args:
-  ///   `metadataString` (String): The current metadata string. It is not used in the function, but it is part of the function signature.
-  ///   `rowList` (List<String>): The list of words in the current row. It is used to determine whether the row represents a file or a folder.
-  ///   `tabulationCount` (int): The level of indentation in the current row. It is used for formatting the metadata string.
-  ///
-  /// Returns:
-  ///   The method returns a String that represents the metadata for the file or folder represented by the row list.
-  ///
-  /// This function checks if the second element of `rowList` is 'F'. If it is, it returns a string representing a folder.
-  /// Otherwise, it returns a string representing a file. If `rowList` has more than two elements, it adds 'NoDatabase' to the file string.
-  /// Otherwise, it adds 'Database'.
-  String addFileFolder(
-      String metadataString, List<String> rowList, int tabulationCount) {
-    return rowList[1] == 'F'
-        ? '$tabulationCount Folder -> ${rowList[0]}\n'
-        : '$tabulationCount File -> ${rowList[0]}.dart\n';
-  }
-
-  /// The function `_checkMetadataChanges` compares the old and new metadata strings and generates a new metadata string that represents the changes.
-  ///
-  /// Args:
-  ///   `oldString` (String): The old metadata string. It is used for comparison with the new metadata string.
-  ///   `newString` (String): The new metadata string. It is used for comparison with the old metadata string.
-  ///
-  /// Returns:
-  ///   The method returns a String that represents the changes between the old and new metadata strings.
-  ///
-  /// This function first removes '+ ' and '= ' from the old metadata string. Then, it splits the old and new metadata strings into lists of lines.
-  /// It also creates a list of non-replaced lines from the old metadata string. If the old and new metadata strings are equal (ignoring case),
-  /// it adds '= ' before each line in the new metadata string. If the old metadata string is empty, it adds '+ ' before each line in the new metadata string.
-  /// Otherwise, it checks each line in the new metadata string. If the line is not in the old metadata string, it adds '+ ' before the line.
-  /// If the line is in the old metadata string but not in the list of non-replaced lines, it adds '= ' before the line.
-  /// Otherwise, it adds '+ ' before the line. Then, it checks each line in the old metadata string. If the line is not in the new metadata string,
-  /// is not empty, and does not contain '---' or ':', it adds '-! ' before the line. Finally, it adds the current date and time and '---\n' to the metadata string and returns it.
-  String _checkMetadataChanges(String oldString, String newString) {
-    String metadata = '';
-    String oldMetadataCustom =
-        oldString.replaceAll('+ ', '').replaceAll('= ', '');
-
-    List<String> newData = newString.trim().split('\n');
-    List<String> oldDataAll = oldMetadataCustom.trim().split('---\n');
-    List<String> oldData =
-        oldDataAll[oldDataAll.length - 1].replaceAll('-! ', '').split('\n');
-    List<String> oldDataNonReplaced =
-        oldDataAll[oldDataAll.length - 1].split('\n');
-
-    stdout.writeln(oldData.join());
-
-    if (oldData.join().trim().toLowerCase() == newString.trim().toLowerCase()) {
-      for (var line in newData) {
-        metadata += '= $line\n';
-      }
-    } else if (oldString == '') {
-      for (var line in newData) {
-        metadata += '+ $line\n';
-      }
-    } else {
-      for (var line in newData) {
-        if (!oldData.contains(line)) {
-          metadata += '+ $line\n';
-        } else {
-          if (!oldDataNonReplaced.contains('-! $line')) {
-            metadata += '= $line\n';
-          } else {
-            metadata += '+ $line\n';
-          }
-        }
-      }
-      for (var line in oldData) {
-        if (!newData.contains(line) &&
-            line != '' &&
-            !line.contains('---') &&
-            !line.contains(':')) {
-          metadata += '-! $line\n';
-        }
-      }
-    }
-
-    metadata += '${DateTime.now()}\n---\n';
-    return metadata;
-  }
-
-  Future<void> _createProjectStructure(String genesisMetadata) async {
-    await GMetadataReader().readGenesisMetadata();
-    stdout.writeln(GMetadataReader.generatePaths.toString());
-    for (var entry in GMetadataReader.generatePaths.entries) {
-      if (!Directory(entry.value.split(' ')[0]).existsSync()) {
-        _createFolder(GMetadataReader.generatePaths[entry.key]!);
-      }
-    }
-    for (var entry in GMetadataReader.paths.entries) {
-      if (!File(entry.value.split(' ')[0]).existsSync()) {
-        if (entry.key.contains('Folder')) {
-          _createFolder(GMetadataReader.paths[entry.key]!);
-        } else {
-          _createFile(GMetadataReader.paths[entry.key]!);
-        }
-      }
-    }
-
-    for (var entry in GMetadataReader.properties.entries) {
-      if (File(entry.key.split(' ')[0]).existsSync()) {
-        _createModel(GMetadataReader.properties[entry.key]!, {
-          GMetadataReader.properties[entry.value]!.split(' ')[0]:
-              GMetadataReader.properties[entry.value]!.split(' ')[1]
-        });
-      }
-    }
-
-    for (var entry in GMetadataReader.removePaths.entries) {
-      if (File(entry.value.split(' ')[0]).existsSync()) {
-        File(entry.value.split(' ')[0]).deleteSync();
-      }
-    }
   }
 
   /// The function `_createFolder` creates a new directory with the given `folderName` and optionally a barrel file inside it.
@@ -430,7 +209,7 @@ targets:
     builders:
       reflectable:
         generate_for:
-          - ${GMetadataReader.generatePaths['Models']}/**.dart
+          - /**.dart //TODO: Get the models directory from the genesis.gs file
         options:
           formatted: true
 ''';
