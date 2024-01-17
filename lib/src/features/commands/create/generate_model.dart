@@ -119,10 +119,8 @@ class GenerateModel {
   /// This function checks if the `database` argument is true. If it is, it generates a string that represents the database methods of the model,
   /// which includes the fields, the primary key, the exceptions, the foreign keys, and the database getters.
   /// If the `database` argument is false, it returns an empty string.
-  String generateDatabaseMethods(
-      bool database, Map<String, String> properties) {
-    if (database) {
-      return '''
+  String generateDatabaseMethods(Map<String, String> properties) {
+    return '''
 
     /// The code `static final Map<String, String> _fields = {...GDaoModel.fields, 'key': 'value'}` is
     /// creating a new map called `_fields`. It is using the spread operator (`...`) to copy all the
@@ -146,8 +144,6 @@ class GenerateModel {
 
     ${_generateDatabaseGetters()}
   ''';
-    }
-    return '';
   }
 
   /// The `_generateFields` function generates a string that represents the fields of a model for a database.

@@ -112,7 +112,6 @@ class Init {
     -- `!`: This file will be skipped by the analyzer
     -- `?`: This property is not nullable on database and code
     -- `*`: Is complete necessary to add this symbol to identify the generation files folders
-    -- `#`: This file will be created but not added to the database
     -- `/DefaultValue`: This property will have a default value
     -- `full`: This file will be a StateFullWidget
     -- `less`: This file will be a StateLessWidget
@@ -125,20 +124,20 @@ class Init {
     __Database F
     ___Models F *
     ____Model1 D
-    _____- Property1/0 int
+    _____- Property1 int
     _____- Property2 string
-    _____- Property3/false bool
-    _____- Property4 DateTime ?
+    _____- Property3 bool
+    _____- Property4 DateTime
     ____Model2 D
     _____- Property1 int
     _____- Property2 string
     _____- Property3 bool
-    _____- Property4 DateTime ?
-    ____Model3 D #
+    _____- Property4 DateTime
+    ____Model3 D
     _____- Property1 int
     _____- Property2 string
     _____- Property3 double
-    _____- Property4 DateTime ?
+    _____- Property4 DateTime
     ____Parameters D
 
     ___Preferences F *
@@ -149,11 +148,11 @@ class Init {
     -- The same as Domain.Database.Models but designed to be used by the repository
     -- If want some more entities, add them below
     ____Entity1 D
-    _____- Property1/0 int
+    _____- Property1 int
     _____- Property2 string
     _____- Property3 bool
-    _____- Property4 DateTime ?
-    _____- Property5 double ?
+    _____- Property4 DateTime
+    _____- Property5 double
 
     Presentation F
     __Screens F *
@@ -183,7 +182,7 @@ class Init {
   /// `writeAsStringSync` method is used to write this content to the new file. If the new file already
   /// exists, this method overwrites it. If the new file does not exist, this method creates it.
   File _writeGenesisReadme(String path) {
-    var content = File('./lib/data_util/readme.md').readAsStringSync();
+    var content = '';
     File genesisReadme = File(path);
     genesisReadme.writeAsStringSync(content);
     return genesisReadme;

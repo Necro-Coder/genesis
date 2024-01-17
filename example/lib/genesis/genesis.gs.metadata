@@ -1,0 +1,450 @@
++ 0 Folder -> Domain
++ 2 Folder -> Database
++ g -> Models -> Domain/Database/Models
++ 3 Folder -> Models
++ 4 File -> Model1.dart
++ 5 p -> Property1 int Nullable
++ 5 p -> Property2 string Nullable
++ 5 p -> Property3 bool Nullable
++ 5 p -> Property4 DateTime Nullable
++ 4 File -> Model2.dart
++ 5 p -> Property1 int Nullable
++ 5 p -> Property2 string Nullable
++ 5 p -> Property3 bool Nullable
++ 5 p -> Property4 DateTime Nullable
++ 4 File -> Model3.dart
++ 5 p -> Property1 int Nullable
++ 5 p -> Property2 string Nullable
++ 5 p -> Property3 double Nullable
++ 5 p -> Property4 DateTime Nullable
++ 4 File -> Parameters.dart
++ g -> Preferences -> Domain/Database/Preferences
++ 3 Folder -> Preferences
++ 0 Folder -> Repository
++ 2 Folder -> Database
++ g -> Entity -> Repository/Entity
++ 3 Folder -> Entity
++ 4 File -> Entity1.dart
++ 5 p -> Property1 int Nullable
++ 5 p -> Property2 string Nullable
++ 5 p -> Property3 bool Nullable
++ 5 p -> Property4 DateTime Nullable
++ 5 p -> Property5 double Nullable
++ 0 Folder -> Presentation
++ g -> Screens -> Presentation/Screens
++ 2 Folder -> Screens
++ 3 File -> HomeScreen.dart
++ 3 File -> LoginScreen.dart
++ g -> Widgets -> Presentation/Widgets
++ 2 Folder -> Widgets
++ g -> Blocks -> Presentation/Blocks
++ 2 Folder -> Blocks
++ 3 File -> ApiBloc.dart
++ 3 File -> RouterBloc.dart
+2024-01-17 09:10:39.955100
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:13:20.892294
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:14:48.758624
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:15:32.778417
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:16:45.615809
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:17:38.752042
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:18:47.403534
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:19:22.549427
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:20:03.326356
+---
+= 0 Folder -> Domain
+= 2 Folder -> Database
+= g -> Models -> Domain/Database/Models
+= 3 Folder -> Models
+= 4 File -> Model1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model2.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Model3.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 double Nullable
+= 5 p -> Property4 DateTime Nullable
+= 4 File -> Parameters.dart
+= g -> Preferences -> Domain/Database/Preferences
+= 3 Folder -> Preferences
+= 0 Folder -> Repository
+= 2 Folder -> Database
+= g -> Entity -> Repository/Entity
+= 3 Folder -> Entity
+= 4 File -> Entity1.dart
+= 5 p -> Property1 int Nullable
+= 5 p -> Property2 string Nullable
+= 5 p -> Property3 bool Nullable
+= 5 p -> Property4 DateTime Nullable
+= 5 p -> Property5 double Nullable
+= 0 Folder -> Presentation
+= g -> Screens -> Presentation/Screens
+= 2 Folder -> Screens
+= 3 File -> HomeScreen.dart
+= 3 File -> LoginScreen.dart
+= g -> Widgets -> Presentation/Widgets
+= 2 Folder -> Widgets
+= g -> Blocks -> Presentation/Blocks
+= 2 Folder -> Blocks
+= 3 File -> ApiBloc.dart
+= 3 File -> RouterBloc.dart
+2024-01-17 09:23:02.902728
+---

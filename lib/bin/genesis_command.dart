@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:genesis/src/features/commands/create/create.dart';
@@ -8,10 +7,13 @@ import 'package:genesis/src/features/error_control/genesis_exception.dart';
 
 void main(List<dynamic> arguments) async {
   bool isRoot = false;
-  Process pwd = await Process.start('ls', []);
-  await for (var event in pwd.stdout.transform(const Utf8Decoder())) {
-    isRoot = event.trim().contains('pubspec.yaml');
+  var dir = Directory.current;
+  var file = File('${dir.path}/pubspec.yaml');
+
+  if (file.existsSync()) {
+    isRoot = true;
   }
+
   if (arguments.isEmpty) {
     Help().printHelp('all');
     return;
@@ -32,7 +34,7 @@ void main(List<dynamic> arguments) async {
       for (var i = 1; i < arguments.length; i++) {
         commandArguments.add(arguments[i]);
       }
-      Create().create(commandArguments);
+      await Create().create(commandArguments);
       if (commandArguments.contains('model') || commandArguments.isEmpty) {
         Create().createReflectionNeeds();
         try {

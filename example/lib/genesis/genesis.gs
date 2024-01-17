@@ -4,8 +4,9 @@
     -- `D`: File
     -- `-`: Property (Is important to add a space after the hyphen)
     -- `!`: This file will be skipped by the analyzer
+    -- `?`: This property is not nullable on database and code
     -- `*`: Is complete necessary to add this symbol to identify the generation files folders
-    -- `#`: This file will be created but not added to the database
+    -- `/DefaultValue`: This property will have a default value
     -- `full`: This file will be a StateFullWidget
     -- `less`: This file will be a StateLessWidget
     -- `cubit`: This file will be a Cubit
@@ -26,7 +27,7 @@
     _____- Property2 string
     _____- Property3 bool
     _____- Property4 DateTime
-    ____Model3 D #
+    ____Model3 D
     _____- Property1 int
     _____- Property2 string
     _____- Property3 double
