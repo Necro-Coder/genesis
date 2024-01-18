@@ -1,7 +1,7 @@
 import 'package:genesis/src/features/reader/models/flutter/genesis_widget_model.dart';
 
 class GScreen extends GWidget {
-  final bool? isStateful;
+  bool? isStateful;
 
   GScreen({String? name, String? path, String? template, this.isStateful})
       : super(name: name, path: path, template: template);

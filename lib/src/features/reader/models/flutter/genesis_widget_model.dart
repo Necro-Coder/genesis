@@ -1,7 +1,7 @@
 import 'package:genesis/src/features/reader/models/common.dart';
 
 class GWidget extends Common {
-  final String? template;
+  String? template;
 
   GWidget({String? name, String? path, this.template})
       : super(name: name, path: path);

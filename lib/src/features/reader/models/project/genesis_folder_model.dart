@@ -1,7 +1,7 @@
 import 'package:genesis/src/features/reader/models/common.dart';
 
 class GFolder extends Common {
-  final bool? isGeneration;
+  bool? isGeneration;
 
   GFolder({String? name, String? path, this.isGeneration})
       : super(name: name, path: path);

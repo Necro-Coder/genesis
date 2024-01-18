@@ -1,11 +1,11 @@
 import 'package:genesis/src/features/reader/models/common.dart';
 
 class GProperty extends Common {
-  final String? type;
-  final String? defaultValue;
-  final bool? isPrimary;
-  final bool? isForeign;
-  final String? table;
+  String? type;
+  String? defaultValue;
+  bool? isPrimary;
+  bool? isForeign;
+  String? table;
 
   GProperty({
     String? name,

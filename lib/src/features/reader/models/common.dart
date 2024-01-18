@@ -1,6 +1,6 @@
 class Common {
-  final String? name;
-  final String? path;
+  String? name;
+  String? path;
 
   Common({this.name, this.path});
 

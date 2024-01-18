@@ -5,11 +5,11 @@ import 'package:genesis/src/features/reader/models/project/files/genesis_propert
 import 'package:genesis/src/features/reader/models/project/genesis_folder_model.dart';
 
 class GeneralFile {
-  final List<GFile>? files;
-  final List<GFolder>? folders;
-  final List<GProperty>? properties;
-  final List<GWidget>? widgets;
-  final List<GScreen>? screens;
+  List<GFile>? files;
+  List<GFolder>? folders;
+  List<GProperty>? properties;
+  List<GWidget>? widgets;
+  List<GScreen>? screens;
 
   GeneralFile({
     this.files,

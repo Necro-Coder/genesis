@@ -22,6 +22,21 @@ class Exceptions {
   final String _errorEmptyMetadata =
       'The metadata file is empty, please, execute genesis create with the genesis.gs complete.';
 
+  final String _errorModelNoName = 'At least one model does not have a name';
+  final String _errorScreenNoName = 'At least one screen does not have a name';
+  final String _errorFolderNoName = 'At least one screen does not have a name';
+  final String _errorWidgetNoName = 'At least one screen does not have a name';
+  final String _errorPropertyNoName =
+      'At least one property does not have a name';
+
+  final String _errorNoTableForeign = 'The property +++ does not have a table';
+  final String _noStateTemplate =
+      'The screen +++ does not have a state or template';
+  final String _tabErrorOnFile = 'The tabulation cannot be 0 on files';
+  final String _errorNeedUpperFolder =
+      'The folder/file +++ needs an folder container';
+  final String _errorNoType = 'The type +++ is not available';
+
   /// The function replaces all occurrences of `+++` in a string with a given variable.
   ///
   /// Args:
@@ -138,8 +153,95 @@ class Exceptions {
   /// The function `throwErrorEmptyMetadata` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_errorEmptyMetadata` message.
-  ///
   void throwErrorEmptyMetadata() {
     throw GenesisCreateException(_errorEmptyMetadata);
+  }
+
+  /// The function `throwErrorModelNoName` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_errorModelNoName` message.
+  void throwErrorModelNoName() {
+    throw GenesisCreateException(_errorModelNoName);
+  }
+
+  /// The function `throwErrorPropertyNoName` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_errorPropertyNoName` message.
+  void throwErrorPropertyNoName() {
+    throw GenesisCreateException(_errorPropertyNoName);
+  }
+
+  /// The function `throwErrorNoTableForeign` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// Args:
+  ///  `property` (String): The name of the property that caused the error. It is used to generate the exception message.
+  ///
+  /// This function calls the `_generateException` method with `_errorNoTableForeign` and `property` as arguments to generate a custom exception message.
+  /// Then, it throws a `GenesisCreateException` with the generated message.
+  void throwErrorNoTableForeign(String property) {
+    throw GenesisCreateException(
+        _generateException(_errorNoTableForeign, property));
+  }
+
+  /// The function `throwErrorScreenNoName` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_errorScreenNoName` message.
+  void throwErrorScreenNoName() {
+    throw GenesisCreateException(_errorScreenNoName);
+  }
+
+  /// The function `throwErrorFolderNoName` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_errorFolderNoName` message.
+  void throwErrorFolderNoName() {
+    throw GenesisCreateException(_errorFolderNoName);
+  }
+
+  /// The function `throwErrorWidgetNoName` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_errorWidgetNoName` message.
+  void throwErrorWidgetNoName() {
+    throw GenesisCreateException(_errorWidgetNoName);
+  }
+
+  /// The function `throwErrorNoStateTemplate` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// Args:
+  /// `screen` (String): The name of the screen that caused the error. It is used to generate the exception message.
+  ///
+  /// This function calls the `_generateException` method with `_noStateTemplate` and `screen` as arguments to generate a custom exception message.
+  /// Then, it throws a `GenesisCreateException` with the generated message.
+  void throwErrorNoStateTemplate(String screen) {
+    throw GenesisCreateException(_generateException(_noStateTemplate, screen));
+  }
+
+  /// The function `throwTabErrorOnFile` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_tabErrorOnFile` message.
+  void throwTabErrorOnFile() {
+    throw GenesisCreateException(_tabErrorOnFile);
+  }
+
+  /// The function `throwErrorNeedUpperFolder` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// Args:
+  /// `folder` (String): The name of the folder that caused the error. It is used to generate the exception message.
+  ///
+  /// This function calls the `_generateException` method with `_errorNeedUpperFolder` and `folder` as arguments to generate a custom exception message.
+  /// Then, it throws a `GenesisCreateException` with the generated message.
+  void throwErrorNeedUpperFolder(String folder) {
+    throw GenesisCreateException(
+        _generateException(_errorNeedUpperFolder, folder));
+  }
+
+  /// The function `throwErrorNoType` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// Args:
+  /// `type` (String): The name of the type that caused the error. It is used to generate the exception message.
+  ///
+  /// This function calls the `_generateException` method with `_errorNoType` and `type` as arguments to generate a custom exception message.
+  /// Then, it throws a `GenesisCreateException` with the generated message.
+  void throwErrorNoType(String type) {
+    throw GenesisCreateException(_generateException(_errorNoType, type));
   }
 }
