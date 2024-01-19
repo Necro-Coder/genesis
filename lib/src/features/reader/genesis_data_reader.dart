@@ -17,6 +17,8 @@ class GDataReader {
 
     int tabulation = 0;
 
+    lines.remove(lines.last);
+
     for (var line in lines) {
       tabulation = _countLeadingTabulations(line);
       if (line.contains('(f)')) {
@@ -156,13 +158,19 @@ class GDataReader {
     } else if (tabulation == 0 && type != 'f') {
       Exceptions().throwTabErrorOnFile();
     } else {
-      var lastPath = _getLastPathWithF(tabulation - 1);
-      if (lastPath != null) {
+      if (type == 'p') {
         paths.addAll({
-          '$lastPath/$name${type == 'd' ? '.dart' : ''}': '$tabulation-$type'
+          '${_getLastPathWithD(tabulation - 1)}/$name.dart': '$tabulation-$type'
         });
       } else {
-        Exceptions().throwErrorNeedUpperFolder(name);
+        var lastPath = _getLastPathWithF(tabulation - 1);
+        if (lastPath != null) {
+          paths.addAll({
+            '$lastPath/$name${type == 'd' ? '.dart' : ''}': '$tabulation-$type'
+          });
+        } else {
+          Exceptions().throwErrorNeedUpperFolder(name);
+        }
       }
     }
     return paths.keys.last;
@@ -171,6 +179,15 @@ class GDataReader {
   String? _getLastPathWithF(int tabulation) {
     for (var entry in paths.entries.toList().reversed) {
       if (entry.value == '$tabulation-F') {
+        return entry.key;
+      }
+    }
+    return null;
+  }
+
+  String? _getLastPathWithD(int tabulation) {
+    for (var entry in paths.entries.toList().reversed) {
+      if (entry.value == '$tabulation-D') {
         return entry.key;
       }
     }
