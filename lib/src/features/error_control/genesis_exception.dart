@@ -34,9 +34,8 @@ class GenesisException implements Exception {
   @override
   String toString() {
     return '''
- ⛔ ⛔ --------------------------------------------- ⛔ ⛔
 $exceptionMessage$message ${stackTrace != '' ? '\n ☠️  Stack Trace ☠️: \n $stackTrace' : ''}
- ⛔ ⛔ --------------------------------------------- ⛔ ⛔
+---
 ''';
   }
 }

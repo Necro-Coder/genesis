@@ -3,6 +3,6 @@ targets:
     builders:
       reflectable:
         generate_for:
-          - null/**.dart
+          - /**.dart //TODO: Get the models directory from the genesis.gs file
         options:
           formatted: true

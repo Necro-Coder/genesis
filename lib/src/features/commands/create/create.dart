@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:genesis/src/features/commands/create/generate_model.dart';
 import 'package:genesis/src/features/error_control/exceptions.dart';
+import 'package:genesis/src/features/error_control/genesis_create_exception.dart';
+import 'package:genesis/src/features/writer/genesis_files/genesis_metadata_writer.dart';
 import 'package:genesis/src/helpers/console_color.dart';
 
 class Create {
@@ -20,46 +22,23 @@ class Create {
     if (arguments.isEmpty) {
       File genesisFile = File('$_genesisFolderPath/genesis.gs');
       if (!genesisFile.existsSync()) {
-        stdout.write(ConsoleColor.penError(
-            'The genesis.gs file does not exist. Please, run the command `genesis init` to create it'));
+        Exceptions().throwGenesisFileNotExist();
         return;
       }
-      stdout.write(ConsoleColor.penInfo('Reading the genesis.gs file...\n'));
-      String genesisFileRead = _readGenesisFile(genesisFile);
-      if (genesisFileRead == '') {
-        return;
-      }
+      stdout
+          .write(ConsoleColor.penInfo('Reading the asdf genesis.gs file...\n'));
       stdout.write(ConsoleColor.penSuccess('genesis.gs read successfully\n'));
       stdout.write(
           ConsoleColor.penInfo('Writing the genesis.gs.metadata file...\n'));
-      //TODO: Write the metadata file
+      try {
+        await GMetadataWriter().writeMetadata();
+      } catch (e) {
+        throw GenesisCreateException(e.toString());
+      }
       stdout.write(ConsoleColor.penSuccess(
           'genesis.gs.metadata written successfully\n'));
       stdout.write(ConsoleColor.penInfo('Creating the project structure...\n'));
     }
-  }
-
-  /// The `_readGenesisFile` function reads the contents of a Genesis file.
-  ///
-  /// Args:
-  ///   `genesisFile` (File): The Genesis file to be read.
-  ///
-  /// Returns:
-  ///   A string containing the contents of the Genesis file.
-  ///
-  /// This function tries to read the `genesisFile` as a string. If it succeeds, it prints a success message and returns the contents of the file.
-  /// If it fails, it throws an error using the `throwErrorReadingGenesisFile` function from the `Exceptions` class and returns an empty string.
-  String _readGenesisFile(File genesisFile) {
-    String genesisFileRead = '';
-    try {
-      genesisFileRead = genesisFile.readAsStringSync();
-    } catch (e) {
-      Exceptions().throwErrorReadingGenesisFile('genesis.gs', e);
-      return '';
-    }
-    stdout.write(
-        ConsoleColor.penSuccess('genesis.gs file was read successfully\n'));
-    return genesisFileRead;
   }
 
   /// The function `_createFolder` creates a new directory with the given `folderName` and optionally a barrel file inside it.

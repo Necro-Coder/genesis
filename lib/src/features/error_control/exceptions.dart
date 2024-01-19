@@ -36,6 +36,7 @@ class Exceptions {
   final String _errorNeedUpperFolder =
       'The folder/file +++ needs an folder container';
   final String _errorNoType = 'The type +++ is not available';
+  final String _genesisFileNotExist = 'The genesis.gs file does not exist';
 
   /// The function replaces all occurrences of `+++` in a string with a given variable.
   ///
@@ -160,15 +161,21 @@ class Exceptions {
   /// The function `throwErrorModelNoName` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_errorModelNoName` message.
-  void throwErrorModelNoName() {
-    throw GenesisCreateException(_errorModelNoName);
+  void throwErrorModelNoName({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_errorModelNoName,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorPropertyNoName` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_errorPropertyNoName` message.
-  void throwErrorPropertyNoName() {
-    throw GenesisCreateException(_errorPropertyNoName);
+  void throwErrorPropertyNoName({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_errorPropertyNoName,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorNoTableForeign` throws a `GenesisCreateException` with a custom message.
@@ -178,30 +185,43 @@ class Exceptions {
   ///
   /// This function calls the `_generateException` method with `_errorNoTableForeign` and `property` as arguments to generate a custom exception message.
   /// Then, it throws a `GenesisCreateException` with the generated message.
-  void throwErrorNoTableForeign(String property) {
+  void throwErrorNoTableForeign(String property,
+      {int line = 0, String content = ''}) {
     throw GenesisCreateException(
-        _generateException(_errorNoTableForeign, property));
+        _generateException(_errorNoTableForeign, property),
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorScreenNoName` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_errorScreenNoName` message.
-  void throwErrorScreenNoName() {
-    throw GenesisCreateException(_errorScreenNoName);
+  void throwErrorScreenNoName({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_errorScreenNoName,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorFolderNoName` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_errorFolderNoName` message.
-  void throwErrorFolderNoName() {
-    throw GenesisCreateException(_errorFolderNoName);
+  void throwErrorFolderNoName({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_errorFolderNoName,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorWidgetNoName` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_errorWidgetNoName` message.
-  void throwErrorWidgetNoName() {
-    throw GenesisCreateException(_errorWidgetNoName);
+  void throwErrorWidgetNoName({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_errorWidgetNoName,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorNoStateTemplate` throws a `GenesisCreateException` with a custom message.
@@ -211,15 +231,22 @@ class Exceptions {
   ///
   /// This function calls the `_generateException` method with `_noStateTemplate` and `screen` as arguments to generate a custom exception message.
   /// Then, it throws a `GenesisCreateException` with the generated message.
-  void throwErrorNoStateTemplate(String screen) {
-    throw GenesisCreateException(_generateException(_noStateTemplate, screen));
+  void throwErrorNoStateTemplate(String screen,
+      {int line = 0, String content = ''}) {
+    throw GenesisCreateException(_generateException(_noStateTemplate, screen),
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwTabErrorOnFile` throws a `GenesisCreateException` with a custom message.
   ///
   /// This function throws a `GenesisCreateException` with the `_tabErrorOnFile` message.
-  void throwTabErrorOnFile() {
-    throw GenesisCreateException(_tabErrorOnFile);
+  void throwTabErrorOnFile({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_tabErrorOnFile,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorNeedUpperFolder` throws a `GenesisCreateException` with a custom message.
@@ -229,9 +256,13 @@ class Exceptions {
   ///
   /// This function calls the `_generateException` method with `_errorNeedUpperFolder` and `folder` as arguments to generate a custom exception message.
   /// Then, it throws a `GenesisCreateException` with the generated message.
-  void throwErrorNeedUpperFolder(String folder) {
+  void throwErrorNeedUpperFolder(String folder,
+      {int line = 0, String content = ''}) {
     throw GenesisCreateException(
-        _generateException(_errorNeedUpperFolder, folder));
+        _generateException(_errorNeedUpperFolder, folder),
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 
   /// The function `throwErrorNoType` throws a `GenesisCreateException` with a custom message.
@@ -241,7 +272,20 @@ class Exceptions {
   ///
   /// This function calls the `_generateException` method with `_errorNoType` and `type` as arguments to generate a custom exception message.
   /// Then, it throws a `GenesisCreateException` with the generated message.
-  void throwErrorNoType(String type) {
-    throw GenesisCreateException(_generateException(_errorNoType, type));
+  void throwErrorNoType(String type, {int line = 0, String content = ''}) {
+    throw GenesisCreateException(_generateException(_errorNoType, type),
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
+  }
+
+  /// The function `throwGenesisFileNotExist` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_genesisFileNotExist` message.
+  void throwGenesisFileNotExist({int line = 0, String content = ''}) {
+    throw GenesisCreateException(_genesisFileNotExist,
+        stackTrace: line == 0 && content == ''
+            ? ''
+            : 'Line: $line -> ${content.trim()}');
   }
 }

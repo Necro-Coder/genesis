@@ -1,9 +1,9 @@
 -- This is a simple comment.
---
+!--
 This is a block comment.
 --!
 
---
+!--
 On this file you can define your project structure.
 
 In order to generate the code, you need to follow the next sintaxis:
@@ -78,3 +78,4 @@ Enjoy it! 😄
         (s) name: LoginScreen, state: true
     (f) name: Widgets, *
         (w) name: CustomWidget, template: Box
+    
