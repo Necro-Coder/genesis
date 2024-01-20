@@ -6,11 +6,6 @@ import 'package:genesis/src/features/reader/genesis_file_lists.dart';
 import 'package:genesis/src/features/reader/genesis_metadata_reader.dart';
 import 'package:genesis/src/features/reader/models/files/genesis_general_file.dart';
 import 'package:genesis/src/features/reader/models/files/genesis_metadata_model.dart';
-import 'package:genesis/src/features/reader/models/flutter/genesis_screen_model.dart';
-import 'package:genesis/src/features/reader/models/flutter/genesis_widget_model.dart';
-import 'package:genesis/src/features/reader/models/project/files/genesis_file_model.dart';
-import 'package:genesis/src/features/reader/models/project/files/genesis_properties_model.dart';
-import 'package:genesis/src/features/reader/models/project/genesis_folder_model.dart';
 
 class MetadataManager {
   final _reader = GDataReader();
@@ -18,23 +13,28 @@ class MetadataManager {
 
   Future<void> manageMetadata() async {
     String jsonContent = await _metadataReader.read();
+    GMetadataModel metadataModel =
+        GMetadataModel(changes: [], unchanged: [], deletions: []);
 
     Map<String, dynamic> jsonMap = jsonDecode(jsonContent);
 
     List<String> dates = jsonMap.keys.toList();
-    dates.sort((a, b) => DateTime.parse(b).compareTo(DateTime.parse(a)));
-    String latestDate = dates.first;
-
-    GMetadataModel metadataModel = GMetadataModel.fromJson(jsonMap[latestDate]);
+    if (dates.isNotEmpty) {
+      dates.sort((a, b) => DateTime.parse(b).compareTo(DateTime.parse(a)));
+      String latestDate = dates.first;
+      metadataModel = GMetadataModel.fromJson(jsonMap[latestDate]);
+    }
 
     await _reader.readData();
 
+    stdout.write('${GFileList().commons.first.runtimeType} files found\n');
+
     GeneralFile generalFiles = GeneralFile(
-      files: GFileList().commons as List<GFile>,
-      folders: GFolderList().commons as List<GFolder>,
-      properties: GPropertyList().commons as List<GProperty>,
-      widgets: GWidgetList().commons as List<GWidget>,
-      screens: GScreenList().commons as List<GScreen>,
+      files: GFileList().commons.map((e) => e).toList(),
+      folders: GFolderList().commons.map((e) => e).toList(),
+      properties: GPropertyList().commons.map((e) => e).toList(),
+      widgets: GWidgetList().commons.map((e) => e).toList(),
+      screens: GScreenList().commons.map((e) => e).toList(),
     );
 
     List<GeneralFile> changes =
@@ -81,10 +81,15 @@ class MetadataManager {
     lines.removeLast();
 
     String json = jsonEncode(metadataModel.toJson());
+    stdout.write('Ultima: ${lines.last}!!\n');
+    if (lines.any((item) => RegExp(r'\d').hasMatch(item))) {
+      lines.add(',');
+    }
+
+    json = '"${DateTime.now().toString()}": $json';
 
     lines.add(json);
     lines.add('}');
-
     await File(filePath).writeAsString(lines.join('\n'));
   }
 }

@@ -86,7 +86,7 @@ class GMetadataWriter {
     }
   }
 
-  void _checkItems(String key, List<Common> generalItems, GCommonList list) {
+  void _checkItems(String key, List<Common> generalItems, dynamic list) {
     for (var item in generalItems) {
       if (list.commons.contains(item)) {
         _unchanged[key]!.add(item);

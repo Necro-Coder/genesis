@@ -36,11 +36,9 @@ class GMetadataModel {
 
   Map<String, dynamic> toJson() {
     return {
-      '${DateTime.now()}': {
-        'changes': changes.map((e) => e.toJson()).toList(),
-        'unchanged': unchanged.map((e) => e.toJson()).toList(),
-        'deletions': deletions.map((e) => e.toJson()).toList(),
-      }
+      'changes': changes.map((e) => e.toJson()).toList(),
+      'unchanged': unchanged.map((e) => e.toJson()).toList(),
+      'deletions': deletions.map((e) => e.toJson()).toList(),
     };
   }
 }

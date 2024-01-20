@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:genesis/src/features/commands/create/generate_model.dart';
 import 'package:genesis/src/features/error_control/exceptions.dart';
 import 'package:genesis/src/features/error_control/genesis_create_exception.dart';
-import 'package:genesis/src/features/writer/genesis_files/genesis_metadata_writer.dart';
+import 'package:genesis/src/features/writer/genesis_files/genesis_metadata_writer_new.dart';
 import 'package:genesis/src/helpers/console_color.dart';
 
 class Create {
@@ -31,7 +31,7 @@ class Create {
       stdout.write(
           ConsoleColor.penInfo('Writing the genesis.gs.metadata file...\n'));
       try {
-        await GMetadataWriter().writeMetadata();
+        await MetadataManager().manageMetadata();
       } catch (e) {
         throw GenesisCreateException(e.toString());
       }
