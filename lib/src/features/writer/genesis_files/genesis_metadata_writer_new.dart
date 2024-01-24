@@ -10,11 +10,14 @@ import 'package:genesis/src/features/reader/models/files/genesis_metadata_model.
 class MetadataManager {
   final _reader = GDataReader();
   final _metadataReader = GMetadataReader();
+  bool _firstWrite = false;
 
   Future<void> manageMetadata() async {
     String jsonContent = await _metadataReader.read();
-    GMetadataModel metadataModel =
-        GMetadataModel(changes: [], unchanged: [], deletions: []);
+    GMetadataModel metadataModel = GMetadataModel(
+        changes: GeneralFile(),
+        unchanged: GeneralFile(),
+        deletions: GeneralFile());
 
     Map<String, dynamic> jsonMap = jsonDecode(jsonContent);
 
@@ -23,6 +26,8 @@ class MetadataManager {
       dates.sort((a, b) => DateTime.parse(b).compareTo(DateTime.parse(a)));
       String latestDate = dates.first;
       metadataModel = GMetadataModel.fromJson(jsonMap[latestDate]);
+    } else {
+      _firstWrite = true;
     }
 
     await _reader.readData();
@@ -37,36 +42,88 @@ class MetadataManager {
       screens: GScreenList().commons.map((e) => e).toList(),
     );
 
-    List<GeneralFile> changes =
-        _compareLists(generalFiles, metadataModel.changes);
-    List<GeneralFile> unchanged =
-        _compareLists(generalFiles, metadataModel.unchanged);
-    List<GeneralFile> deletions =
-        _compareLists(generalFiles, metadataModel.deletions);
-
-    GMetadataModel newMetadataModel = GMetadataModel(
-      changes: changes,
-      unchanged: unchanged,
-      deletions: deletions,
-    );
+    GMetadataModel newMetadataModel =
+        await _compareLists(generalFiles, metadataModel.changes);
+    if (_firstWrite) {
+      newMetadataModel.changes = generalFiles;
+      newMetadataModel.deletions = GeneralFile();
+      newMetadataModel.unchanged = GeneralFile();
+    }
     await _writeMetadata(newMetadataModel);
   }
 
-  List<GeneralFile> _compareLists(
-      GeneralFile generalFiles, List<GeneralFile> list) {
-    List<GeneralFile> result = [];
+  Future<GMetadataModel> _compareLists(
+      GeneralFile generalFiles, GeneralFile item) async {
+    GMetadataModel newMetadataModel = GMetadataModel(
+      changes: GeneralFile(
+        files: [],
+        folders: [],
+        properties: [],
+        widgets: [],
+        screens: [],
+      ),
+      unchanged: GeneralFile(
+        files: [],
+        folders: [],
+        properties: [],
+        widgets: [],
+        screens: [],
+      ),
+      deletions: GeneralFile(
+        files: [],
+        folders: [],
+        properties: [],
+        widgets: [],
+        screens: [],
+      ),
+    );
 
-    for (GeneralFile file in list) {
-      if (file.files == generalFiles.files &&
-          file.folders == generalFiles.folders &&
-          file.properties == generalFiles.properties &&
-          file.widgets == generalFiles.widgets &&
-          file.screens == generalFiles.screens) {
-        result.add(file);
+    if (item.files == null) {
+      return newMetadataModel;
+    }
+    stdout.writeln(
+        '${item.files}, ${item.folders}, ${item.properties}, ${item.widgets}, ${item.screens}');
+    for (var file in generalFiles.files!) {
+      if (!item.files!.contains(file)) {
+        newMetadataModel.changes.files!.add(file);
+      } else {
+        newMetadataModel.unchanged.files!.add(file);
       }
     }
 
-    return result;
+    for (var folder in generalFiles.folders!) {
+      if (!item.folders!.contains(folder)) {
+        newMetadataModel.changes.folders!.add(folder);
+      } else {
+        newMetadataModel.unchanged.folders!.add(folder);
+      }
+    }
+
+    for (var property in generalFiles.properties!) {
+      if (!item.properties!.contains(property)) {
+        newMetadataModel.changes.properties!.add(property);
+      } else {
+        newMetadataModel.unchanged.properties!.add(property);
+      }
+    }
+
+    for (var widget in generalFiles.widgets!) {
+      if (!item.widgets!.contains(widget)) {
+        newMetadataModel.changes.widgets!.add(widget);
+      } else {
+        newMetadataModel.unchanged.widgets!.add(widget);
+      }
+    }
+
+    for (var screen in generalFiles.screens!) {
+      if (!item.screens!.contains(screen)) {
+        newMetadataModel.changes.screens!.add(screen);
+      } else {
+        newMetadataModel.unchanged.screens!.add(screen);
+      }
+    }
+
+    return newMetadataModel;
   }
 
   Future<void> _writeMetadata(GMetadataModel metadataModel) async {
@@ -81,7 +138,6 @@ class MetadataManager {
     lines.removeLast();
 
     String json = jsonEncode(metadataModel.toJson());
-    stdout.write('Ultima: ${lines.last}!!\n');
     if (lines.any((item) => RegExp(r'\d').hasMatch(item))) {
       lines.add(',');
     }

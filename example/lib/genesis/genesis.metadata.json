@@ -1,16 +1,467 @@
 {
-
-"2024-01-20 20:10:17.144609": {"changes":[],"unchanged":[],"deletions":[]}
-,
-"2024-01-20 20:10:25.152879": {"changes":[],"unchanged":[],"deletions":[]}
-,
-"2024-01-20 20:10:28.529200": {"changes":[],"unchanged":[],"deletions":[]}
-,
-"2024-01-20 20:10:30.838919": {"changes":[],"unchanged":[],"deletions":[]}
-,
-"2024-01-24 12:44:20.002860": {"changes":[],"unchanged":[],"deletions":[]}
-,
-"2024-01-24 12:45:24.807896": {"changes":[],"unchanged":[],"deletions":[]}
-,
-"2024-01-24 12:46:03.411964": {"changes":[],"unchanged":[],"deletions":[]}
+    "2024-01-24 17:34:51.873896": {
+        "changes": {
+            "files": [
+                {
+                    "name": " ModelExample1",
+                    "path": "lib/Domain/Database/Models/ModelExample1.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                },
+                {
+                    "name": " ModelExample2",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                },
+                {
+                    "name": " ModelExample3",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                }
+            ],
+            "folders": [
+                {
+                    "name": " Domain",
+                    "path": "lib/Domain",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Database",
+                    "path": "lib/Domain/Database",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Models",
+                    "path": "lib/Domain/Database/Models",
+                    "isGeneration": true
+                },
+                {
+                    "name": " Repository",
+                    "path": "lib/Repository",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Database",
+                    "path": "lib/Repository/Database",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Entity",
+                    "path": "lib/Repository/Database/Entity",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Presentation",
+                    "path": "lib/Presentation",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Screens",
+                    "path": "lib/Presentation/Screens",
+                    "isGeneration": true
+                },
+                {
+                    "name": " Widgets",
+                    "path": "lib/Presentation/Widgets",
+                    "isGeneration": true
+                }
+            ],
+            "properties": [
+                {
+                    "name": " name",
+                    "path": "null/name.dart",
+                    "type": " string",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": null,
+                    "table": null
+                },
+                {
+                    "name": " age",
+                    "path": "null/age.dart",
+                    "type": " int",
+                    "defaultValue": null,
+                    "isPrimary": null,
+                    "isForeign": null,
+                    "table": null
+                },
+                {
+                    "name": " groupId",
+                    "path": "null/groupId.dart",
+                    "type": " int",
+                    "defaultValue": null,
+                    "isPrimary": null,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " double",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " bool",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                }
+            ],
+            "widgets": [
+                {
+                    "name": "CustomWidget",
+                    "path": "lib/Presentation/Widgets/CustomWidget.dart",
+                    "template": "Box"
+                }
+            ],
+            "screens": [
+                {
+                    "name": " HomeScreen",
+                    "path": "lib/Presentation/Screens/HomeScreen.dart",
+                    "template": " Home",
+                    "isStateful": null
+                },
+                {
+                    "name": " LoginScreen",
+                    "path": "lib/Presentation/Screens/LoginScreen.dart",
+                    "template": null,
+                    "isStateful": false
+                }
+            ]
+        },
+        "unchanged": {
+            "files": null,
+            "folders": null,
+            "properties": null,
+            "widgets": null,
+            "screens": null
+        },
+        "deletions": {
+            "files": null,
+            "folders": null,
+            "properties": null,
+            "widgets": null,
+            "screens": null
+        }
+    },
+    "2024-01-24 17:35:27.493773": {
+        "changes": {
+            "files": [
+                {
+                    "name": " ModelExample4",
+                    "path": "lib/Domain/Database/Models/ModelExample4.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                }
+            ],
+            "folders": [],
+            "properties": [
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample4.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample4.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample4.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample4.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                }
+            ],
+            "widgets": [],
+            "screens": []
+        },
+        "unchanged": {
+            "files": [
+                {
+                    "name": " ModelExample1",
+                    "path": "lib/Domain/Database/Models/ModelExample1.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                },
+                {
+                    "name": " ModelExample2",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                },
+                {
+                    "name": " ModelExample3",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "isBarrel": null,
+                    "isModel": null,
+                    "extension": null
+                }
+            ],
+            "folders": [
+                {
+                    "name": " Domain",
+                    "path": "lib/Domain",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Database",
+                    "path": "lib/Domain/Database",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Models",
+                    "path": "lib/Domain/Database/Models",
+                    "isGeneration": true
+                },
+                {
+                    "name": " Repository",
+                    "path": "lib/Repository",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Database",
+                    "path": "lib/Repository/Database",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Entity",
+                    "path": "lib/Repository/Database/Entity",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Presentation",
+                    "path": "lib/Presentation",
+                    "isGeneration": null
+                },
+                {
+                    "name": " Screens",
+                    "path": "lib/Presentation/Screens",
+                    "isGeneration": true
+                },
+                {
+                    "name": " Widgets",
+                    "path": "lib/Presentation/Widgets",
+                    "isGeneration": true
+                }
+            ],
+            "properties": [
+                {
+                    "name": " name",
+                    "path": "null/name.dart",
+                    "type": " string",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": null,
+                    "table": null
+                },
+                {
+                    "name": " age",
+                    "path": "null/age.dart",
+                    "type": " int",
+                    "defaultValue": null,
+                    "isPrimary": null,
+                    "isForeign": null,
+                    "table": null
+                },
+                {
+                    "name": " groupId",
+                    "path": "null/groupId.dart",
+                    "type": " int",
+                    "defaultValue": null,
+                    "isPrimary": null,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " double",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " bool",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample2.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                },
+                {
+                    "name": " name",
+                    "path": "lib/Domain/Database/Models/ModelExample3.dart",
+                    "type": " type",
+                    "defaultValue": null,
+                    "isPrimary": false,
+                    "isForeign": false,
+                    "table": null
+                }
+            ],
+            "widgets": [
+                {
+                    "name": "CustomWidget",
+                    "path": "lib/Presentation/Widgets/CustomWidget.dart",
+                    "template": "Box"
+                }
+            ],
+            "screens": [
+                {
+                    "name": " HomeScreen",
+                    "path": "lib/Presentation/Screens/HomeScreen.dart",
+                    "template": " Home",
+                    "isStateful": null
+                },
+                {
+                    "name": " LoginScreen",
+                    "path": "lib/Presentation/Screens/LoginScreen.dart",
+                    "template": null,
+                    "isStateful": false
+                }
+            ]
+        },
+        "deletions": {
+            "files": [],
+            "folders": [],
+            "properties": [],
+            "widgets": [],
+            "screens": []
+        }
+    }
 }

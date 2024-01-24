@@ -22,4 +22,19 @@ class GWidget extends Common {
       'template': template,
     };
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is GWidget &&
+        other.name == name &&
+        other.path == path &&
+        other.template == template;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^ path.hashCode ^ template.hashCode;
+  }
 }

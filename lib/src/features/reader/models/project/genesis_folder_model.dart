@@ -22,4 +22,19 @@ class GFolder extends Common {
       'isGeneration': isGeneration,
     };
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is GFolder &&
+        other.name == name &&
+        other.path == path &&
+        other.isGeneration == isGeneration;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^ path.hashCode ^ isGeneration.hashCode;
+  }
 }

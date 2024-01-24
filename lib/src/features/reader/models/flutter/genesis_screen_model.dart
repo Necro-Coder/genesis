@@ -24,4 +24,23 @@ class GScreen extends GWidget {
       'isStateful': isStateful,
     };
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is GScreen &&
+        other.name == name &&
+        other.path == path &&
+        other.template == template &&
+        other.isStateful == isStateful;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^
+        path.hashCode ^
+        template.hashCode ^
+        isStateful.hashCode;
+  }
 }

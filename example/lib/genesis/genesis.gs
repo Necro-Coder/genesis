@@ -67,6 +67,11 @@ Enjoy it! 😄
                 (p) name: name, type: type, primary: primary, foreign: foreign, table: table
                 (p) name: name, type: type, primary: primary, foreign: foreign, table: table
                 (p) name: name, type: type, primary: primary, foreign: foreign, table: table
+            (d) name: ModelExample4
+                (p) name: name, type: type, primary: primary, foreign: foreign, table: table
+                (p) name: name, type: type, primary: primary, foreign: foreign, table: table
+                (p) name: name, type: type, primary: primary, foreign: foreign, table: table
+                (p) name: name, type: type, primary: primary, foreign: foreign, table: table
 
 (f) name: Repository
     (f) name: Database

@@ -41,4 +41,29 @@ class GProperty extends Common {
       'table': table,
     };
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is GProperty &&
+        other.name == name &&
+        other.path == path &&
+        other.type == type &&
+        other.defaultValue == defaultValue &&
+        other.isPrimary == isPrimary &&
+        other.isForeign == isForeign &&
+        other.table == table;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^
+        path.hashCode ^
+        type.hashCode ^
+        defaultValue.hashCode ^
+        isPrimary.hashCode ^
+        isForeign.hashCode ^
+        table.hashCode;
+  }
 }

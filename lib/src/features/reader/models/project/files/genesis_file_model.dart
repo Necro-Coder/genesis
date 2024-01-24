@@ -29,4 +29,25 @@ class GFile extends Common {
       'extension': extension,
     };
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is GFile &&
+        other.name == name &&
+        other.path == path &&
+        other.isBarrel == isBarrel &&
+        other.isModel == isModel &&
+        other.extension == extension;
+  }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^
+        path.hashCode ^
+        isBarrel.hashCode ^
+        isModel.hashCode ^
+        extension.hashCode;
+  }
 }
