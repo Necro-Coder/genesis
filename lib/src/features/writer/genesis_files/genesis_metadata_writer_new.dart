@@ -44,10 +44,10 @@ class MetadataManager {
 
     GMetadataModel newMetadataModel = await _checkForDeletions(
         generalFiles,
-        metadataModel.changes,
-        metadataModel.unchanged,
+        metadataModel.changes!,
+        metadataModel.unchanged!,
         await _compareLists(
-            generalFiles, metadataModel.changes, metadataModel.unchanged));
+            generalFiles, metadataModel.changes!, metadataModel.unchanged!));
     if (_firstWrite) {
       newMetadataModel.changes = generalFiles;
       newMetadataModel.deletions = GeneralFile(
@@ -102,32 +102,32 @@ class MetadataManager {
         generalFiles.files,
         itemChanges.files,
         itemUnchanged.files,
-        newMetadataModel.changes.files,
-        newMetadataModel.unchanged.files);
+        newMetadataModel.changes!.files,
+        newMetadataModel.unchanged!.files);
     _compareAndAddToLists(
         generalFiles.folders,
         itemChanges.folders,
         itemUnchanged.folders,
-        newMetadataModel.changes.folders,
-        newMetadataModel.unchanged.folders);
+        newMetadataModel.changes!.folders,
+        newMetadataModel.unchanged!.folders);
     _compareAndAddToLists(
         generalFiles.properties,
         itemChanges.properties,
         itemUnchanged.properties,
-        newMetadataModel.changes.properties,
-        newMetadataModel.unchanged.properties);
+        newMetadataModel.changes!.properties,
+        newMetadataModel.unchanged!.properties);
     _compareAndAddToLists(
         generalFiles.widgets,
         itemChanges.widgets,
         itemUnchanged.widgets,
-        newMetadataModel.changes.widgets,
-        newMetadataModel.unchanged.widgets);
+        newMetadataModel.changes!.widgets,
+        newMetadataModel.unchanged!.widgets);
     _compareAndAddToLists(
         generalFiles.screens,
         itemChanges.screens,
         itemUnchanged.screens,
-        newMetadataModel.changes.screens,
-        newMetadataModel.unchanged.screens);
+        newMetadataModel.changes!.screens,
+        newMetadataModel.unchanged!.screens);
 
     return newMetadataModel;
   }
@@ -138,19 +138,19 @@ class MetadataManager {
       GeneralFile unchanged,
       GMetadataModel newMetadataModel) async {
     await _checkListForDeletions(generalFiles.files, changes.files,
-        unchanged.files, newMetadataModel.deletions.files);
+        unchanged.files, newMetadataModel.deletions!.files);
 
     await _checkListForDeletions(generalFiles.folders, changes.folders,
-        unchanged.folders, newMetadataModel.deletions.folders);
+        unchanged.folders, newMetadataModel.deletions!.folders);
 
     await _checkListForDeletions(generalFiles.properties, changes.properties,
-        unchanged.properties, newMetadataModel.deletions.properties);
+        unchanged.properties, newMetadataModel.deletions!.properties);
 
     await _checkListForDeletions(generalFiles.widgets, changes.widgets,
-        unchanged.widgets, newMetadataModel.deletions.widgets);
+        unchanged.widgets, newMetadataModel.deletions!.widgets);
 
     await _checkListForDeletions(generalFiles.screens, changes.screens,
-        unchanged.screens, newMetadataModel.deletions.screens);
+        unchanged.screens, newMetadataModel.deletions!.screens);
 
     return newMetadataModel;
   }
