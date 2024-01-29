@@ -37,6 +37,7 @@ class Exceptions {
       'The folder/file +++ needs an folder container';
   final String _errorNoType = 'The type +++ is not available';
   final String _genesisFileNotExist = 'The genesis.gs file does not exist';
+  final String _invalidArgument = 'The argument +++ is invalid';
 
   /// The function replaces all occurrences of `+++` in a string with a given variable.
   ///
@@ -287,5 +288,18 @@ class Exceptions {
         stackTrace: line == 0 && content == ''
             ? ''
             : 'Line: $line -> ${content.trim()}');
+  }
+
+  /// The function `throwInvalidArguments` throws a `GenesisCreateException` with a custom message.
+  ///
+  /// This function throws a `GenesisCreateException` with the `_invalidArgument` message.
+  ///
+  /// Args:
+  /// `argument` (String): The name of the argument that caused the error. It is used to generate the exception message.
+  ///
+  /// This function calls the `_generateException` method with `_invalidArgument` and `argument` as arguments to generate a custom exception message.
+  void throwInvalidArguments(String argument) {
+    throw GenesisCreateException(
+        _generateException(_invalidArgument, argument));
   }
 }

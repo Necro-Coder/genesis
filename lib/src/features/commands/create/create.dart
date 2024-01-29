@@ -38,6 +38,21 @@ class Create {
       stdout.write(ConsoleColor.penSuccess(
           'genesis.gs.metadata written successfully\n'));
       stdout.write(ConsoleColor.penInfo('Creating the project structure...\n'));
+    } else {
+      switch (arguments[0].toString().toLowerCase()) {
+        case 'model':
+          break;
+        case 'folder':
+          break;
+        case 'widget':
+          break;
+        case 'screen':
+          break;
+        default:
+          Exceptions()
+              .throwInvalidArguments(arguments[0].toString().toLowerCase());
+          return;
+      }
     }
   }
 
