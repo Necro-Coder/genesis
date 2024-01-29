@@ -6,15 +6,18 @@ import 'package:reflectable/reflectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_simple_dao_backend/sqflite_simple_dao_backend.dart';
 
-class GenesisPreferences {
+/// `GenesisPreferencesManager` is a class that represents the user preferences in the Genesis system.
+///
+/// It is used to manage and manipulate user preference data throughout the application.
+/// This class provides methods to get and set user preferences, such as theme, language, etc.
+class GenesisPreferencesManager {
   /// `_prefs` is a late-initialized static instance of `SharedPreferences`.
   /// `SharedPreferences` is a library that wraps platform-specific persistent storage (NSUserDefaults on iOS and macOS, SharedPreferences on Android, etc.).
   /// It is used to persistently store simple data like strings, booleans, integers, and doubles.
   static late SharedPreferences _prefs;
 
-  /// `init` is a static method that initializes the `GenesisPreferences` class.
+  /// `init` is a static method that initializes the `GenesisPreferencesManager` class.
   /// It asynchronously gets an instance of `SharedPreferences` and assigns it to `_prefs`.
-  /// It also creates a new instance of `Exceptions` and assigns it to `_exceptions`.
   static Future init() async {
     _prefs = await SharedPreferences.getInstance();
   }
@@ -22,7 +25,7 @@ class GenesisPreferences {
   /// `userPreferences` is a static final map that stores user preferences.
   /// The keys are strings that represent the names of the preferences.
   /// The values are dynamic and can be of any type.
-  static final Map<String, dynamic> userPreferences = {};
+  static Map<String, dynamic> userPreferences = {};
 
   /// `getValue` is a static method that retrieves the value of a user preference.
   ///
@@ -42,11 +45,11 @@ class GenesisPreferences {
   ///
   /// ```dart
   /// void main() async {
-  ///   // Initialize GenesisPreferences
-  ///   await GenesisPreferences.init();
+  ///   // Initialize GenesisPreferencesManager
+  ///   await GenesisPreferencesManager.init();
   ///
   ///   // Get a user preference
-  ///   var username = await GenesisPreferences.getValue<String>('username');
+  ///   var username = await GenesisPreferencesManager.getValue<String>('username');
   ///   print(username);  // Outputs: JohnDoe
   /// }
   /// ```
@@ -73,14 +76,14 @@ class GenesisPreferences {
   ///
   /// ```dart
   /// void main() async {
-  ///   // Initialize GenesisPreferences
-  ///   await GenesisPreferences.init();
+  ///   // Initialize GenesisPreferencesManager
+  ///   await GenesisPreferencesManager.init();
   ///
   ///   // Set a user preference
-  ///   await GenesisPreferences.setValue<String>('username', 'JohnDoe');
+  ///   await GenesisPreferencesManager.setValue<String>('username', 'JohnDoe');
   ///
   ///   // Get a user preference
-  ///   var username = await GenesisPreferences.getValue<String>('username');
+  ///   var username = await GenesisPreferencesManager.getValue<String>('username');
   ///   print(username);  // Outputs: JohnDoe
   /// }
   /// ```
@@ -101,17 +104,17 @@ class GenesisPreferences {
   ///
   /// ```dart
   /// void main() async {
-  ///   // Initialize GenesisPreferences
-  ///   await GenesisPreferences.init();
+  ///   // Initialize GenesisPreferencesManager
+  ///   await GenesisPreferencesManager.init();
   ///
   ///   // Set a user preference
-  ///   await GenesisPreferences.setValue<String>('username', 'JohnDoe');
+  ///   await GenesisPreferencesManager.setValue<String>('username', 'JohnDoe');
   ///
   ///   // Restore user preferences to their default values
-  ///   await GenesisPreferences.restorePreferences();
+  ///   await GenesisPreferencesManager.restorePreferences();
   ///
   ///   // Get a user preference
-  ///   var username = await GenesisPreferences.getValue<String>('username');
+  ///   var username = await GenesisPreferencesManager.getValue<String>('username');
   ///   print(username);  // Outputs: default value for 'username'
   /// }
   /// ```

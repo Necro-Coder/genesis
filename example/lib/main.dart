@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genesis/genesis.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,9 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    List<int> list = [1, 2, 3];
-    GList<int> gList = GList(list);
-
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
